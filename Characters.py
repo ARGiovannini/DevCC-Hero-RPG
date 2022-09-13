@@ -1,7 +1,7 @@
 my_hero = {
     "name": "Link",
     "level": 1,
-    "health": 150,
+    "health": 500,
     "equipment": {"Master Sword", "Slingshot", "Boomerang", "Triforce of Courage"},
     "attack": (("Slash", 40), ("Slingshot", 20), ("Boomerang", 30)),
     "Coins": {
@@ -41,7 +41,7 @@ villain_3 = {
     "name": "Gannon",
     "level": 20,
     "health": 500,
-    "equipment": {"Triforce of power", {"Princess Zelda", "Triforce of Wisdom"}, "Hover shoes", },
+    "equipment": {"Triforce of power", ("Princess Zelda", "Triforce of Wisdom"), "Hover shoes", },
     "attack": (("Slash", 20), ("Stomp", 30), ("Demon Breath", 40)),
     "Coins": {
         "Green rupies": 0,
