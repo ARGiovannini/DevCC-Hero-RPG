@@ -1,7 +1,7 @@
 my_hero = {
     "name": "Link",
     "level": 1,
-    "health": 500,
+    "health": 200,
     "equipment": {"Master Sword", "Slingshot", "Boomerang", "Triforce of Courage"},
     "attacks": (("Slash", 40), ("Slingshot", 20), ("Boomerang", 30)),
     "rupies": {
