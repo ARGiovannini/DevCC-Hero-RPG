@@ -1,5 +1,3 @@
-from ast import For
-from audioop import add
 import random
 import sys, time
 from colorama import Fore
@@ -8,7 +6,7 @@ from Characters import villain_1
 from Characters import villain_2
 from Characters import villain_3
 
-start_text = f"{Fore.WHITE}{my_hero['name']}, you wield the triforce of courage. \nYou must embark on a quest to defeat Gannon, an evil demon who holds the triforce of power, \nand rescue princess zelda, who holds the triforce of wisdom."
+start_text = f"{Fore.YELLOW}{my_hero['name']}, you wield the triforce of courage. \nYou must embark on a quest to defeat Gannon, an evil demon who holds the triforce of power, \nand rescue princess zelda, who holds the triforce of wisdom."
 fire_mountain_text = f"{Fore.LIGHTRED_EX}{my_hero['name']} has traveled to fire mountain and encountered {villain_1['name']}, a giant fire breathing serpent. (Level: {villain_1['level']} Health: {villain_1['health']})"
 spirit_temple_text = f"{Fore.CYAN}{my_hero['name']} has traveled to the spirit temple and encountered {villain_2['name']}, magical witches wielding the elements. (Level: {villain_2['level']} Health: {villain_2['health']})"
 gannons_castle_text = f"{Fore.RED}{my_hero['name']} has traveled to Gannon's castle and encountered {villain_3['name']} (Level: {villain_3['level']} Health: {villain_3['health']})"
@@ -18,7 +16,7 @@ def slow_print(string):
     for letter in string:
         sys.stdout.write(letter)
         sys.stdout.flush()
-        time.sleep(0)
+        time.sleep(0.0)
     print("")
 
 def battle(villain):
@@ -56,7 +54,7 @@ def battle(villain):
 
 def death():
     print(f"{Fore.RED}You have died...")
-    sys.exit(f"{Fore.YELLOW}You must attempt your adventure again")
+    sys.exit(f"{Fore.WHITE}You must attempt your adventure again")
 
 def add_inventory(villain):
     my_hero['equipment'].update(villain['equipment'])
@@ -64,30 +62,29 @@ def add_inventory(villain):
         slow_print(f"{Fore.WHITE}+ {inventory_item} added to {my_hero['name']}'s inventory.")
 
 def loot_rupies(villain):
-    ruppies_update_text = f"{Fore.WHITE}{my_hero['name']}'s wallet now contains: \n{my_hero['rupies']}"
     for each in my_hero['rupies']:
         my_hero['rupies'][each] += villain['rupies'][each]
         slow_print(f"+ {villain['rupies'][each]} {each}")
     slow_print("")
-    slow_print(ruppies_update_text)
+    slow_print(f"{Fore.WHITE}{my_hero['name']}'s wallet now contains: \n{my_hero['rupies']}")
 
 def level_up():
-    health_increase = random.randrange(30, 50) * my_hero['level']
+    health_increase = random.randrange(40, 50) * my_hero['level']
     my_hero['level'] += 1
     my_hero['health'] += health_increase
     slow_print(f"{Fore.WHITE}{my_hero['name']}'s level has increased to {my_hero['level']},\nand {my_hero['name']}'s health has increased by {health_increase}. \nTotal health is now {my_hero['health']}.")
     print("")
-    new_attack_name = input(f"{Fore.WHITE}Please name your new attack with your looted weapon: ")
+    new_attack_name = input(f"{Fore.YELLOW}Please name your new attack with your looted weapon: ")
     new_attack_tuple = ((new_attack_name, 35 * my_hero['level']),)
     my_hero['attacks'] += new_attack_tuple
 
 def remove_useless_attacks():
-    slow_print(f"{Fore.WHITE}Defeating Gannon will not be easy, you should discard your childhood weapons and use what you have gained on your journey")
+    slow_print(f"{Fore.YELLOW}Defeating Gannon will not be easy, you should discard your childhood weapons and use what you have gained on your journey")
     list_of_attacks = list(my_hero['attacks'])
     removed_attack_1 = list_of_attacks.pop(1)
     removed_attack_2 = list_of_attacks.pop(1)
     my_hero['attacks'] = tuple(list_of_attacks)
-    slow_print(f"{removed_attack_1} and {removed_attack_2} have been removed from your attacks.")
+    slow_print(f"{Fore.WHITE}{removed_attack_1} and {removed_attack_2} have been removed from your attacks.")
 
 def battle_victory(villain):
     add_inventory(villain)

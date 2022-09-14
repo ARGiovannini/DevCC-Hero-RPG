@@ -42,7 +42,7 @@ villain_2 = {
 villain_3 = {
     "name": "Gannon",
     "level": 4,
-    "health": 450,
+    "health": 420,
     "equipment": {"Triforce of power", ("Princess Zelda", "Triforce of Wisdom"), "Hover shoes", },
     "attacks": (("Slash", 20), ("Stomp", 30), ("Demon Breath", 40)),
     "rupies": {
