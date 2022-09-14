@@ -1,5 +1,6 @@
 import random
 import sys, time
+from colorama import Fore
 from Characters import my_hero
 from Characters import villain_1
 from Characters import villain_2
@@ -17,6 +18,8 @@ def battle(villain):
         my_attack = random.choice(my_hero['attacks'])
         villain['health'] -= my_attack[1]
         if villain['health'] <= 0:
+            slow_print(f"{my_hero['name']} attacked with a {my_attack[0]} ({my_attack[1]} DMG). {villain['name']} has 0 health left.")
+            slow_print("")
             slow_print(f"{my_hero['name']} has defeated {villain['name']}!")
             slow_print("")
             break
@@ -26,6 +29,8 @@ def battle(villain):
         villain_attack = random.choice(villain['attacks'])
         my_hero['health'] -= villain_attack[1]
         if my_hero['health'] <= 0:
+            slow_print(f"{villain['name']} attacked with a {villain_attack[0]} ({villain_attack[1]} DMG). {my_hero['name']} has 0 health left.")
+            slow_print("")
             slow_print("You have died")
         else:
             slow_print(f"{villain['name']} attacked with a {villain_attack[0]} ({villain_attack[1]} DMG). {my_hero['name']} has {my_hero['health']} health left.")
