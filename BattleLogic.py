@@ -9,18 +9,22 @@ def add_inventory(villain):
     my_hero['equipment'].update(villain['equipment'])
     for inventory_item in villain['equipment']:
         print(f"+ {inventory_item} added to {my_hero['name']}'s inventory.")
-        print("")
 
 def loot_rupies(villain):
     for each in my_hero['rupies']:
         my_hero['rupies'][each] += villain['rupies'][each]
         print(f"+ {villain['rupies'][each]} {each}")
-        print("")
-    print(f"{my_hero['name']}'s wallet now contains {my_hero['rupies']}")
-    print("")
+    print(f"{my_hero['name']}'s wallet now contains: \n{my_hero['rupies']}")
 
-# def new_attacks():
-    
+def level_up(villain):
+    health_increase = random.randrange(30, 50) * my_hero['level']
+    my_hero['level'] += 1
+    my_hero['health'] += health_increase
+    print(f"{my_hero['name']}'s level has increased to {my_hero['level']},\nand {my_hero['name']}'s health has increased by {health_increase}. \nTotal health is now {my_hero['health']}.")
+    new_attack_name = input(f"Please name your new attack with your looted weapon: ")
+    new_attack_tuple = ((new_attack_name, 35 * my_hero['level']),)
+    my_hero['attacks'] += new_attack_tuple
+    print(my_hero['attacks'])
 
 def battle(villain):
     while my_hero['health'] > 0:
@@ -51,21 +55,33 @@ def run_game():
     if my_hero['health'] <= 0:
         sys.exit("You must attempt your adventure again")
     add_inventory(villain_1)
+    print("")
     loot_rupies(villain_1)
+    print("")
+    level_up(villain_1)
+    print("")
     print(f"{my_hero['name']} has traveled to the spirit temple and encountered {villain_2['name']} (Level: {villain_2['level']} Health: {villain_2['health']})")
     print("")
     battle(villain_2)
     if my_hero['health'] <= 0:
         sys.exit("You must attempt your adventure again")
     add_inventory(villain_2)
+    print("")
     loot_rupies(villain_2)
+    print("")
+    level_up(villain_2)
+    print("")
     print(f"{my_hero['name']} has traveled to Gannon's castle and encountered {villain_3['name']} (Level: {villain_3['level']} Health: {villain_3['health']})")
     print("")
     battle(villain_3)
     if my_hero['health'] <= 0:
         sys.exit("You must attempt your adventure again")
     add_inventory(villain_3)
+    print("")
     loot_rupies(villain_3)
+    print("")
+    level_up(villain_3)
     if my_hero['health'] > 0:
-        print("Congratulations, you have defeated Gannon and regained the triforce of power. You, along with Princess Zelda and her triforce of wisdom will keep balance and peace in Hyrule.")
+        print("Congratulations, you have defeated Gannon and regained the triforce of power!\nYou, along with Princess Zelda and her triforce of wisdom \nwill keep balance and peace in Hyrule.")
+        print("")
     
