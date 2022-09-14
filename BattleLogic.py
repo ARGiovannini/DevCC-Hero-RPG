@@ -9,7 +9,7 @@ def slow_print(string):
     for letter in string:
         sys.stdout.write(letter)
         sys.stdout.flush()
-        time.sleep(0.15)
+        time.sleep(0.015)
     print("")
 
 def add_inventory(villain):
